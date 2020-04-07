@@ -1,27 +1,30 @@
 // get a reference to the textbox where the bill type is to be entered
-var billTypeTextElement = document.querySelector(".billTypeText");
-//get a reference to the add button
-var addToBillBtnElement = document.querySelector(".addToBillBtn");
-//create a variable that will keep track of the total bill
-var totalOneElement = document.querySelector(".totalOne");
 
-var callsTotalElement = document.querySelector(".callTotalOne");
-var smsTotalElement = document.querySelector(".smsTotalOne");
 //add an event listener for when the add button is pressed
 
-addToBillBtnElement.addEventListener("click",textBillTotal)
+var addToBillBtnElement = document.querySelector(".addToBillBtn");
 
     // alert (billTypeTextElement.value);
    function textBillTotal (){
+    var billTypeTextElement = document.querySelector(".billTypeText");
+    //get a reference to the add button
+    
+    //create a variable that will keep track of the total bill
+    var totalOneElement = document.querySelector(".totalOne");
+    
+    var callsTotalElement = document.querySelector(".callTotalOne");
+    var smsTotalElement = document.querySelector(".smsTotalOne");
     var callsTotal = 0;
     var smsTotal = 0;
     // get the value entered in the billType textfield
-    var billTypeEntered = billTypeTextElement.value.trim();
+    var billTypeEntered = billTypeTextElement.value.split(",");
+    for (var i=0;i<billTypeEntered.length;i++){
+        var billItem = billTypeEntered[i].trim();
     // update the correct total
-    if (billTypeEntered === "call") {
+    if (billItem === "call") {
         callsTotal += 2.75
     }
-    else if (billTypeEntered === "sms") {
+    else if (billItem === "sms") {
         smsTotal += 0.75;
     }
 
@@ -30,8 +33,10 @@ addToBillBtnElement.addEventListener("click",textBillTotal)
     smsTotalElement.innerHTML = smsTotal.toFixed(2);
     var totalCost = callsTotal + smsTotal;
     totalOneElement.innerHTML = totalCost.toFixed(2);
+    }
 
    };
+   addToBillBtnElement.addEventListener("click",textBillTotal)
 
 
 // textTotalAddBtn.addEventListener('click', totalCostElem);
@@ -57,4 +62,4 @@ addToBillBtnElement.addEventListener("click",textBillTotal)
 //     else if (totalCostElem >= 30) {
 //         totalCostElem.classList.add("warning");
 //     }
-// }
+// 
