@@ -8,13 +8,15 @@ var smsTotalTwoElement = document.querySelector(".smsTotalTwo")
 //create a variable that will keep track of the total bill
 var totalTwoElement = document.querySelector(".totalTwo")
 //add an event listener for when the add button is pressed
-function radioButtonBill () {
-var checkedRadioBtn = document.querySelector("input[name='billItemType']:checked");
-if (checkedRadioBtn){
-    var billItemType = checkedRadioBtn.value}
-    // alert(checkedRadioBtn.value);
-    var callsTotal = 0;
+var callsTotal = 0;
     var smsTotal = 0;
+function radioButtonBill() {
+    var checkedRadioBtn = document.querySelector("input[name='billItemType']:checked");
+    if (checkedRadioBtn) {
+        var billItemType = checkedRadioBtn.value
+    }
+    // alert(checkedRadioBtn.value);
+    
     // billItemType will be 'call' or 'sms'
 
     if (billItemType === "call") {
@@ -28,11 +30,19 @@ if (checkedRadioBtn){
     var totalCost = callsTotal + smsTotal;
     totalTwoElement.innerHTML = totalCost.toFixed(2);
 
+
+    if (totalCost.toFixed(2) >= 50) {
+        // adding the danger class will make the text red
+        totalTwoElement.classList.add("danger");
+    }
+    else if (totalCost.toFixed(2) >= 30) {
+        totalTwoElement.classList.add("warning");
+    }
 };
 
-    // billItemType will be 'call' or 'sms'
-    
-    radioBillAddBtnElement.addEventListener("click", radioButtonBill);
+// billItemType will be 'call' or 'sms'
+
+radioBillAddBtnElement.addEventListener("click", radioButtonBill);
 //in the event listener get the value from the billItemTypeRadio radio buttons
 
 // * add the appropriate value to the running total
