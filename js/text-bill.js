@@ -33,12 +33,12 @@ function textBillTotal() {
         smsTotalElement.innerHTML = smsTotal.toFixed(2);
         var totalCost = callsTotal + smsTotal;
         totalOneElement.innerHTML = totalCost.toFixed(2);
-        
-        if (totalCost.toFixed(2) >= 50){
+
+        if (totalCost.toFixed(2) >= 50) {
             // adding the danger class will make the text red
             totalOneElement.classList.add("danger");
         }
-        else if (totalCost.toFixed(2)  >= 30){
+        else if (totalCost.toFixed(2) >= 30) {
             totalOneElement.classList.add("warning");
         }
     }
@@ -67,13 +67,13 @@ addToBillBtnElement.addEventListener("click", textBillTotal)
 // function flashingTotals(){
 
 //     // ... other code here
-    
+
 //     //update the totals that is displayed on the screen.
 //     callsTotalElem.innerHTML = callsTotal.toFixed(2);
 //     smsTotalElem.innerHTML = smsTotal.toFixed(2);
 //     var totalCost = callsTotal + smsTotal;
 //     totalCostElem.innerHTML = totalCost.toFixed(2);
-    
+
 //     //color the total based on the criteria
 //     if (totalCost >= 50){
 //         // adding the danger class will make the text red
