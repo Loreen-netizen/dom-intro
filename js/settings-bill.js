@@ -12,40 +12,79 @@ billItemTypeWithSettingsElement.forEach(function (button) {
 
 
 // get refences to all the settings fields
-var callCostSettingElement = document.querySelector(".u-full-width.callCostSetting");
-var smsCostSettingElement = document.querySelector(".u-full-width.smsCostSetting");
-var warningLevelSettingElement = document.querySelector(".u-full-width.warningLevelSetting ");
-var criticalLevelSettingElement = document.querySelector("u-full-width.criticalLevelSetting");
+var callCostSettingElement = document.getElementById("callSetting");
+console.log(callCostSettingElement.value);
+var smsCostSettingElement = document.getElementById("smsSetting");
+console.log(smsCostSettingElement.value);
+var warningLevelSettingElement = document.getElementById("warningSetting");
 
-
+var criticalLevelSettingElement = document.getElementById("criticalSetting");
 //get a reference to the add button
 var billWithSettingsButtonElement = document.querySelector(".button-primary.billWithSettings");
-console.log(billWithSettingsButtonElement);
+// console.log(billWithSettingsButtonElement);
 //get a reference to the 'Update settings' button
-var updateSettingsElement = document.querySelector(".button-primary.updateSettings");
-console.log(updateSettingsElement);
+var updateSettingsElement = document.getElementById("updateSettingsButton");
+// updateSettingsElement.addEventListener("click",hello);
+// console.log(updateSettingsElement);
 // create a variables that will keep track of all the settings
-// var totalSettingsElement = document.querySelector(".totalSettings");
+
 
 // create a variables that will keep track of all three totals.
-var totalSettingsElement = document.querySelector(".totalSettings");
+var callTotalSettingsElement = document.getElementById("callsTotal");
+var smsTotalSettingsElement = document.getElementById("smsTotal");
+var totalSettingsElement = document.getElementById("overallTotal");
 //add an event listener for when the 'Update settings' button is pressed
 var helloYeu = function(){ 
     alert("i have been clicked") };
 updateSettingsElement.addEventListener("click", helloYeu);
 //add an event listener for when the add button is pressed
-var smsChecked = document.querySelector("smses");
+// in the event listener get the value from the billItemTypeRadio radio buttons
+var callChecked = document.getElementById("calls");
+console.log(callChecked);
+
+var smsChecked = document.getElementById("smses");
 console.log(smsChecked);
-var callChecked = document.querySelector("#call");
+
+    var callTotal=0;
+    var smsTotal=0;
+    var totalCost4 = 0;
+    costPerCall = 0;
+    costPerSms = 0;
 var helloYeu = function(){
-    var smsChecked = document.getElementById("sms");
-console.log(smsChecked);
-     alert(smsChecked) };
+    
+
+    if (smsChecked.checked == true) {
+        alert(smsChecked.value);
+        smsTotal += costPerSms;
+        smsTotalSettingsElement.innerHTML = smsTotal;
+        // totalSettingsElement.innerHTML += smsTotalSettingsElement.innerHTML;
+        totalCost4 += costPerSms;
+        totalSettingsElement.innerHTML = totalCost4;
+    }
+    else if (callChecked.checked == true){
+        alert(callChecked.value);
+        callTotal+= costPerCall;
+        callTotalSettingsElement.innerHTML= callTotal;
+        totalCost4 += costPerCall;
+        totalSettingsElement.innerHTML = totalCost4;
+    }
+    else{callTotalSettingsElement.innerHTML = 0.00;
+        smsTotalSettingsElement.innerHTML= 0.00;
+        totalSettingsElement.innerHTML= 0.00;}
+    
+};
+
      billWithSettingsButtonElement.addEventListener("click", helloYeu);
 
-//in the event listener get the value from the billItemTypeRadio radio buttons
-// * add the appropriate value to the call / sms total
-// * add the appropriate value to the overall total
-// * add nothing for invalid values that is not 'call' or 'sms'.
+
+     updateSettingsElement.onclick = function(){
+        costPerCall = callCostSettingElement.value;
+        costPerSms = smsCostSettingElement.value;
+     }
+;
+
+// * add the appropriate value to the call / sms total***
+// * add the appropriate value to the overall total***
+// * add nothing for invalid values that is not 'call' or 'sms'.****
 // * display the latest total on the screen.
-// * check the value thresholds and display the total value in the right color.
+// * check the value thresholds and display the total value in the right color. 
