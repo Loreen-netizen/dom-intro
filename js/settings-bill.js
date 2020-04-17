@@ -1,21 +1,21 @@
 // get a reference to the sms or call radio buttons
 var billItemTypeWithSettingsElement = document.querySelectorAll(".billItemTypeWithSettings");
-var hello = function () {
+// var hello = function () {
 
-    alert("i have been changed")
-};
+//     alert("i have been changed")
+// };
 
-billItemTypeWithSettingsElement.forEach(function (button) {
-    console.log(button);
-    button.addEventListener("change", hello);
-});
+// billItemTypeWithSettingsElement.forEach(function (button) {
+//     console.log(button);
+//     button.addEventListener("change", hello);
+// });
 
 
 // get refences to all the settings fields
 var callCostSettingElement = document.getElementById("callSetting");
-console.log(callCostSettingElement.value);
+// console.log(callCostSettingElement.value);
 var smsCostSettingElement = document.getElementById("smsSetting");
-console.log(smsCostSettingElement.value);
+// console.log(smsCostSettingElement.value);
 var warningLevelSettingElement = document.getElementById("warningSetting");
 
 var criticalLevelSettingElement = document.getElementById("criticalSetting");
@@ -34,53 +34,73 @@ var callTotalSettingsElement = document.getElementById("callsTotal");
 var smsTotalSettingsElement = document.getElementById("smsTotal");
 var totalSettingsElement = document.getElementById("overallTotal");
 //add an event listener for when the 'Update settings' button is pressed
-var helloYeu = function(){ 
-    alert("i have been clicked") };
-updateSettingsElement.addEventListener("click", helloYeu);
+// var helloYeu = function () {
+//     alert("i have been clicked")
+// };
+// updateSettingsElement.addEventListener("click", helloYeu);
 //add an event listener for when the add button is pressed
 // in the event listener get the value from the billItemTypeRadio radio buttons
 var callChecked = document.getElementById("calls");
-console.log(callChecked);
+// console.log(callChecked);
 
 var smsChecked = document.getElementById("smses");
-console.log(smsChecked);
+// console.log(smsChecked);
 
-    var callTotal=0;
-    var smsTotal=0;
-    var totalCost4 = 0;
-    costPerCall = 0;
-    costPerSms = 0;
-var helloYeu = function(){
+var callTotal = 0;
+var smsTotal = 0;
+var totalCost4 = 0;
+costPerCall = 0;
+costPerSms = 0;
+var warning = 0;
+var critical = 0;
+var helloYeu = function () {
     
-
     if (smsChecked.checked == true) {
-        alert(smsChecked.value);
+        // alert(smsChecked.value);
         smsTotal += costPerSms;
-        smsTotalSettingsElement.innerHTML = smsTotal;
+        smsTotalSettingsElement.innerHTML = smsTotal.toFixed(2);
         // totalSettingsElement.innerHTML += smsTotalSettingsElement.innerHTML;
         totalCost4 += costPerSms;
-        totalSettingsElement.innerHTML = totalCost4;
+        totalSettingsElement.innerHTML = totalCost4.toFixed(2);
     }
-    else if (callChecked.checked == true){
-        alert(callChecked.value);
-        callTotal+= costPerCall;
-        callTotalSettingsElement.innerHTML= callTotal;
+    else if (callChecked.checked == true) {
+        // alert(callChecked.value);
+        callTotal += costPerCall;
+        callTotalSettingsElement.innerHTML = callTotal.toFixed(2);
         totalCost4 += costPerCall;
-        totalSettingsElement.innerHTML = totalCost4;
+        totalSettingsElement.innerHTML = totalCost4.toFixed(2);
     }
-    else{callTotalSettingsElement.innerHTML = 0.00;
-        smsTotalSettingsElement.innerHTML= 0.00;
-        totalSettingsElement.innerHTML= 0.00;}
-    
+    else if(smsChecked.checked == false && callChecked.checked == false ) 
+    {callTotalSettingsElement.innerHTML = 0;
+        smsTotalSettingsElement.innerHTML = 0;
+        totalSettingsElement.innerHTML = 0;
+    }
+
+     if (totalCost4 >= warning && totalCost4 < critical) {
+        totalSettingsElement.classList.add("warning");
+    }
+    else if (totalCost4 >= critical) {
+        totalSettingsElement.classList.replace("warning","danger");
+    }
+    // else if (totalCost4 ==0 && critical == 0 && warning ==0) {
+    //     totalSettingsElement.classList.add("black");
+    // }
+  console.log(totalCost4)
+
 };
 
-     billWithSettingsButtonElement.addEventListener("click", helloYeu);
+updateSettingsElement.onclick = function () {
+    costPerCall = parseFloat(callCostSettingElement.value);
+    costPerSms = parseFloat(smsCostSettingElement.value);
+    warning = parseFloat(warningLevelSettingElement.value)
+    critical = parseFloat(criticalLevelSettingElement.value)
+};
+
+billWithSettingsButtonElement.addEventListener("click", helloYeu);
 
 
-     updateSettingsElement.onclick = function(){
-        costPerCall = callCostSettingElement.value;
-        costPerSms = smsCostSettingElement.value;
-     }
+
+
 ;
 
 // * add the appropriate value to the call / sms total***
