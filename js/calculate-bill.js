@@ -30,11 +30,11 @@ function calculateBtnClicked(){
             else if (billItem === "sms"){
                 billTotal += 0.75;
             }
-            if (billTotal.toFixed(2) >= 50) {
+            if (parseFloat(billTotal.toFixed(2)) >= 50) {
                 // adding the danger class will make the text red
                 billTotalElement.classList.add("danger");
             }
-            else if (billTotal.toFixed(2) >= 30) {
+            else if (parseFloat(billTotal.toFixed(2)) >= 30) {
                 billTotalElement.classList.add("warning");
             }
         }
