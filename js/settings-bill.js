@@ -32,7 +32,7 @@ var updateSettingsElement = document.getElementById("updateSettingsButton");
 // create a variables that will keep track of all three totals.
 var callTotalSettingsElement = document.getElementById("callsTotal");
 var smsTotalSettingsElement = document.getElementById("smsTotal");
-var totalSettingsElement = document.getElementById("overallTotal");
+var totalSettingsElement = document.getElementById("totalSettings");
 //add an event listener for when the 'Update settings' button is pressed
 // var helloYeu = function () {
 //     alert("i have been clicked")
@@ -76,15 +76,15 @@ var helloYeu = function () {
         totalSettingsElement.innerHTML = 0;
     }
 
-     if (totalCost4 >= warning && totalCost4 < critical) {
-        totalSettingsElement.classList.add("warning");
+    if (totalCost4 >= warning && totalCost4 < critical) {
+        totalSettingsElement.className = "warning";
     }
     else if (totalCost4 >= critical) {
-        totalSettingsElement.classList.replace("warning","danger");
+        totalSettingsElement.className ="danger";
     }
-    // else if (totalCost4 ==0 && critical == 0 && warning ==0) {
-    //     totalSettingsElement.classList.add("black");
-    // }
+    else if (totalCost4 > 0 && totalCost4 < critical  && totalCost4 < warning ) {
+        totalSettingsElement.className = "black";
+    }
   console.log(totalCost4)
 
 };
@@ -94,6 +94,15 @@ updateSettingsElement.onclick = function () {
     costPerSms = parseFloat(smsCostSettingElement.value);
     warning = parseFloat(warningLevelSettingElement.value)
     critical = parseFloat(criticalLevelSettingElement.value)
+    if (totalCost4 >= warning && totalCost4 < critical) {
+        totalSettingsElement.className = "warning";
+    }
+    else if (totalCost4 >= critical) {
+        totalSettingsElement.className ="danger";
+    }
+    else if (totalCost4 > 0 && totalCost4 < critical  && totalCost4 < warning ) {
+        totalSettingsElement.className = "black";
+    }
 };
 
 billWithSettingsButtonElement.addEventListener("click", helloYeu);

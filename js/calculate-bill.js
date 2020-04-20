@@ -6,7 +6,7 @@ const calculateBtnElement = document.querySelector(".calculateBtn");
 
 
 //get a reference to the billTotal element
-const billTotalElement = document.querySelector(".billTotal	");
+const billTotalElement = document.getElementById("billTotal");
 //get a reference to the billString
 const billStringField = document.querySelector(".billString");
 
@@ -20,28 +20,31 @@ function calculateBtnClicked(){
         //split the string
         var billItems = billString.split(",");
         // a variable for the total phone bill.
-        var billTotal = 0;
+        var billTotal1 = 0;
         //loop over all the bill items
         for (var i=0;i<billItems.length;i++){
             var billItem = billItems[i].trim();
             if (billItem === "call"){
-                billTotal += 2.75;
+                billTotal1 += 2.75;
             }
             else if (billItem === "sms"){
-                billTotal += 0.75;
+                billTotal1 += 0.75;
             }
-            if (parseFloat(billTotal.toFixed(2)) >= 50) {
+            if (parseFloat(billTotal1.toFixed(2)) >= 50) {
                 // adding the danger class will make the text red
-                billTotalElement.classList.add("danger");
+                billTotalElement.className = "danger";
             }
-            else if (parseFloat(billTotal.toFixed(2)) >= 30) {
-                billTotalElement.classList.add("warning");
+            else if (parseFloat(billTotal1.toFixed(2)) >= 30) {
+                billTotalElement.className = "warning";
+            }
+            else if  (parseFloat(billTotal1.toFixed(2)) > 0 < 30 ) {
+                billTotalElement.className = "black";
             }
         }
         
         //round to two decimals
-        var roundedBillTotal = billTotal.toFixed(2);
-        billTotalElement.innerHTML = roundedBillTotal;
+        var roundedBillTotal1 =  parseFloat(billTotal1.toFixed(2));
+        billTotalElement.innerHTML = roundedBillTotal1;
         
     }
 

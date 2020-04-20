@@ -2,29 +2,30 @@
 
 //add an event listener for when the add button is pressed
 
-var addToBillBtnElement = document.querySelector(".addToBillBtn");
+var addToBillBtnElement = document.getElementById("addToBillBtnn");
 
 // alert (billTypeTextElement.value);
-function textBillTotal() {
-    var billTypeTextElement = document.querySelector(".billTypeText");
+var billTypeTextElement = document.querySelector(".billTypeText");
     //get a reference to the add button
 
     //create a variable that will keep track of the total bill
-    var totalOneElement = document.querySelector(".totalOne");
+    var totalOneElement = document.getElementById("totalOne");
 
     var callsTotalElement = document.querySelector(".callTotalOne");
     var smsTotalElement = document.querySelector(".smsTotalOne");
     var callsTotal = 0;
     var smsTotal = 0;
+function textBillTotal() {
+    
     // get the value entered in the billType textfield
-    var billTypeEntered = billTypeTextElement.value.split(",");
-    for (var i = 0; i < billTypeEntered.length; i++) {
-        var billItem = billTypeEntered[i].trim();
+    var billTypeEntered = billTypeTextElement.value.trim();
+    
+        var billItem = billTypeEntered;
         // update the correct total
-        if (billItem === "call") {
+        if (billItem  === "call") {
             callsTotal += 2.75
         }
-        else if (billItem === "sms") {
+        else if (billItem  === "sms") {
             smsTotal += 0.75;
         }
 
@@ -36,14 +37,16 @@ function textBillTotal() {
 
         if (totalCost.toFixed(2) >= 50) {
             // adding the danger class will make the text red
-            totalOneElement.classList.add("danger");
+            totalOneElement.className = "danger";
         }
         else if (totalCost.toFixed(2) >= 30) {
-            totalOneElement.classList.add("warning");
+            totalOneElement.className ="warning";
         }
-    }
 
-};
+        else if (totalCost.toFixed(2)> 0 < 30 ) {
+            totalOneElement.className = "black";
+        }
+    };
 addToBillBtnElement.addEventListener("click", textBillTotal)
 
 
