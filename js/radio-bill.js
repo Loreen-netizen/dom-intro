@@ -6,10 +6,10 @@ var callTotalTwoElement = document.querySelector(".callTotalTwo")
 var smsTotalTwoElement = document.querySelector(".smsTotalTwo")
 
 //create a variable that will keep track of the total bill
-var totalTwoElement = document.querySelector(".totalTwo")
+var totalTwoElement = document.getElementById("totalTwo")
 //add an event listener for when the add button is pressed
-var callsTotal = 0;
-    var smsTotal = 0;
+var callsTotalR= 0;
+    var smsTotalR = 0;
 function radioButtonBill() {
     var checkedRadioBtn = document.querySelector("input[name='billItemType']:checked");
     if (checkedRadioBtn) {
@@ -20,23 +20,26 @@ function radioButtonBill() {
     // billItemType will be 'call' or 'sms'
 
     if (billItemType === "call") {
-        callsTotal += 2.75
+        callsTotalR += 2.75
     }
     else if (billItemType === "sms") {
-        smsTotal += 0.75;
+        smsTotalR += 0.75;
     }
-    callTotalTwoElement.innerHTML = callsTotal.toFixed(2);
-    smsTotalTwoElement.innerHTML = smsTotal.toFixed(2);
-    var totalCost = callsTotal + smsTotal;
-    totalTwoElement.innerHTML = totalCost.toFixed(2);
+    callTotalTwoElement.innerHTML = callsTotalR.toFixed(2);
+    smsTotalTwoElement.innerHTML = smsTotalR.toFixed(2);
+    var totalCostR = callsTotalR + smsTotalR;
+    totalTwoElement.innerHTML = totalCostR.toFixed(2);
 
 
-    if (totalCost.toFixed(2) >= 50) {
+    if (totalCostR.toFixed(2) >= 50) {
         // adding the danger class will make the text red
-        totalTwoElement.classList.add("danger");
+        totalTwoElement.className = "danger";
     }
-    else if (totalCost.toFixed(2) >= 30) {
-        totalTwoElement.classList.add("warning");
+    else if (totalCostR.toFixed(2) >= 30) {
+        totalTwoElement.className ="warning";
+    }
+    else if (totalCostR.toFixed(2) < 30) {
+        totalTwoElement.className ="black";
     }
 };
 
