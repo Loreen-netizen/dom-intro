@@ -81,10 +81,14 @@ var helloYeu = function () {
     }
     else if (totalCost4 >= critical) {
         totalSettingsElement.className ="danger";
+    } 
+    else if (totalCost4 > 0 && critical == 0 && warning == 0) {
+        totalSettingsElement.className = "black";
     }
     else if (totalCost4 > 0 && totalCost4 < critical  && totalCost4 < warning ) {
         totalSettingsElement.className = "black";
     }
+   
   console.log(totalCost4)
 
 };
