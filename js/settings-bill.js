@@ -75,19 +75,20 @@ var helloYeu = function () {
         smsTotalSettingsElement.innerHTML = 0;
         totalSettingsElement.innerHTML = 0;
     }
-
-    if (totalCost4 >= warning && totalCost4 < critical) {
+    
+     if (totalCost4 >= 0 && critical == 0 && warning == 0) {
+        totalSettingsElement.className = "black";
+    }
+    else if (totalCost4 >= 0 && totalCost4 < critical  && totalCost4 < warning ) {
+        totalSettingsElement.className = "black";
+    }
+    else if (totalCost4 >= warning && totalCost4 < critical) {
         totalSettingsElement.className = "warning";
     }
     else if (totalCost4 >= critical) {
         totalSettingsElement.className ="danger";
     } 
-    else if (totalCost4 > 0 && critical == 0 && warning == 0) {
-        totalSettingsElement.className = "black";
-    }
-    else if (totalCost4 > 0 && totalCost4 < critical  && totalCost4 < warning ) {
-        totalSettingsElement.className = "black";
-    }
+    
    
   console.log(totalCost4)
 
@@ -104,7 +105,7 @@ updateSettingsElement.onclick = function () {
     else if (totalCost4 >= critical) {
         totalSettingsElement.className ="danger";
     }
-    else if (totalCost4 > 0 && totalCost4 < critical  && totalCost4 < warning ) {
+    else if (totalCost4 >= 0 && totalCost4 < critical  && totalCost4 < warning ) {
         totalSettingsElement.className = "black";
     }
 };
