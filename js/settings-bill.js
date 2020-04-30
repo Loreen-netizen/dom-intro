@@ -53,8 +53,9 @@ costPerCall = 0;
 costPerSms = 0;
 var warning = 0;
 var critical = 0;
-var helloYeu = function () {
-    
+
+var calculateCost = function () {
+
     if (smsChecked.checked == true) {
         // alert(smsChecked.value);
         smsTotal += costPerSms;
@@ -70,31 +71,35 @@ var helloYeu = function () {
         totalCost4 += costPerCall;
         totalSettingsElement.innerHTML = totalCost4.toFixed(2);
     }
-    else if(smsChecked.checked == false && callChecked.checked == false ) 
-    {callTotalSettingsElement.innerHTML = 0;
+    else if (smsChecked.checked == false && callChecked.checked == false) {
+    callTotalSettingsElement.innerHTML = 0;
         smsTotalSettingsElement.innerHTML = 0;
         totalSettingsElement.innerHTML = 0;
     }
-    
-     if (totalCost4 >= 0 && critical == 0 && warning == 0) {
-        totalSettingsElement.className = "black";
+};
+
+var changeClass = function () {
+
+    if (totalCost4 >= 0 && critical == 0 && warning == 0) {
+        totalSettingsElement.className = "";
     }
-    else if (totalCost4 >= 0 && totalCost4 < critical  && totalCost4 < warning ) {
-        totalSettingsElement.className = "black";
+    else if (totalCost4 >= 0 && totalCost4 < critical && totalCost4 < warning) {
+        totalSettingsElement.className = "";
     }
     else if (totalCost4 >= warning && totalCost4 < critical) {
         totalSettingsElement.className = "warning";
     }
     else if (totalCost4 >= critical) {
-        totalSettingsElement.className ="danger";
-    } 
-    
-   
-  console.log(totalCost4)
+        totalSettingsElement.className = "danger";
+    }
+
+
+    // console.log(totalCost4)
 
 };
 
 updateSettingsElement.onclick = function () {
+
     costPerCall = parseFloat(callCostSettingElement.value);
     costPerSms = parseFloat(smsCostSettingElement.value);
     warning = parseFloat(warningLevelSettingElement.value)
@@ -103,14 +108,15 @@ updateSettingsElement.onclick = function () {
         totalSettingsElement.className = "warning";
     }
     else if (totalCost4 >= critical) {
-        totalSettingsElement.className ="danger";
+        totalSettingsElement.className = "danger";
     }
-    else if (totalCost4 >= 0 && totalCost4 < critical  && totalCost4 < warning ) {
-        totalSettingsElement.className = "black";
+    else if (totalCost4 >= 0 && totalCost4 < critical && totalCost4 < warning) {
+        totalSettingsElement.className = "";
     }
 };
 
-billWithSettingsButtonElement.addEventListener("click", helloYeu);
+billWithSettingsButtonElement.addEventListener("click", calculateCost);
+billWithSettingsButtonElement.addEventListener("click", changeClass);
 
 
 

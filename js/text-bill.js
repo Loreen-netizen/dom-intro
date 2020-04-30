@@ -28,7 +28,8 @@ function textBillTotal() {
         else if (billItem  === "sms") {
             smsTotal += 0.75;
         }
-
+    };
+var addNewClass = function(){
         //update the totals that is displayed on the screen.
         callsTotalElement.innerHTML = callsTotal.toFixed(2);
         smsTotalElement.innerHTML = smsTotal.toFixed(2);
@@ -44,10 +45,11 @@ function textBillTotal() {
         }
 
         else if (totalCost.toFixed(2)> 0 < 30 ) {
-            totalOneElement.className = "black";
+            totalOneElement.className = "";
         }
     };
 addToBillBtnElement.addEventListener("click", textBillTotal)
+addToBillBtnElement.addEventListener("click", addNewClass)
 
 
 

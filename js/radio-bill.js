@@ -25,12 +25,13 @@ function radioButtonBill() {
     else if (billItemType === "sms") {
         smsTotalR += 0.75;
     }
+};
+
+var updateClass = function(){
     callTotalTwoElement.innerHTML = callsTotalR.toFixed(2);
     smsTotalTwoElement.innerHTML = smsTotalR.toFixed(2);
     var totalCostR = callsTotalR + smsTotalR;
     totalTwoElement.innerHTML = totalCostR.toFixed(2);
-
-
     if (totalCostR.toFixed(2) >= 50) {
         // adding the danger class will make the text red
         totalTwoElement.className = "danger";
@@ -39,13 +40,14 @@ function radioButtonBill() {
         totalTwoElement.className ="warning";
     }
     else if (totalCostR.toFixed(2) < 30) {
-        totalTwoElement.className ="black";
+        totalTwoElement.className ="";
     }
 };
 
 // billItemType will be 'call' or 'sms'
 
 radioBillAddBtnElement.addEventListener("click", radioButtonBill);
+radioBillAddBtnElement.addEventListener("click", updateClass);
 //in the event listener get the value from the billItemTypeRadio radio buttons
 
 // * add the appropriate value to the running total
