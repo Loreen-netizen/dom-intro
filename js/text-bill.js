@@ -1,27 +1,18 @@
-// get a reference to the textbox where the bill type is to be entered
-
-//add an event listener for when the add button is pressed
-
 var addToBillBtnElement = document.getElementById("addToBillBtnn");
-
-// alert (billTypeTextElement.value);
 var billTypeTextElement = document.querySelector(".billTypeText");
-    //get a reference to the add button
+var totalOneElement = document.getElementById("totalOne");
+var callsTotalElement = document.querySelector(".callTotalOne");
+var smsTotalElement = document.querySelector(".smsTotalOne");
 
-    //create a variable that will keep track of the total bill
-    var totalOneElement = document.getElementById("totalOne");
+var callsTotal = 0;
+var smsTotal = 0;
 
-    var callsTotalElement = document.querySelector(".callTotalOne");
-    var smsTotalElement = document.querySelector(".smsTotalOne");
-    var callsTotal = 0;
-    var smsTotal = 0;
 function textBillTotal() {
     
-    // get the value entered in the billType textfield
     var billTypeEntered = billTypeTextElement.value.trim();
     
         var billItem = billTypeEntered;
-        // update the correct total
+        
         if (billItem  === "call") {
             callsTotal += 2.75
         }
@@ -30,14 +21,14 @@ function textBillTotal() {
         }
     };
 var addNewClass = function(){
-        //update the totals that is displayed on the screen.
+        
         callsTotalElement.innerHTML = callsTotal.toFixed(2);
         smsTotalElement.innerHTML = smsTotal.toFixed(2);
         var totalCost = callsTotal + smsTotal;
         totalOneElement.innerHTML = totalCost.toFixed(2);
 
         if (totalCost.toFixed(2) >= 50) {
-            // adding the danger class will make the text red
+            
             totalOneElement.className = "danger";
         }
         else if (totalCost.toFixed(2) >= 30) {
