@@ -10,7 +10,7 @@ var smsTotalSettingsElement = document.getElementById("smsTotal");
 var totalSettingsElement = document.getElementById("totalSettings");
 var callChecked = document.getElementById("calls");
 var smsChecked = document.getElementById("smses");
-let billWithSettingsInstance = billWithSettingsFunction();
+var billWithSettingsInstance = billWithSettingsFunction();
 
 updateSettingsElement.onclick = function () {
 
