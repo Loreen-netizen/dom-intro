@@ -3,29 +3,43 @@ var calculateBtnClicked = function (){
     var callsTotal = 0;
     var smsTotals = 0;
     var total = 0;
-    var splitString = "";
 
 
-    var cutString = function (string){
-      splitString = string.split(",");
-       return splitString;
+    var cutString = function(string){
+      var billItems = string.split(",");
+      return billItems; 
+    }
+
+    var splitString = function(theBillItems){
+        var theSplitString = theBillItems;
+      for(var i=0;i < theSplitString.length;i++)
+      {
+           var billItem = theSplitString[i].trim();
+          if (billItem === "call"){
+             allTotals += 2.75;
+             callsTotal += 2.75;
+          }
+          else if (billItem === "sms"){
+                  allTotals += 0.75;
+                  smsTotals += 0.75;
+          }          
+      }
+    //   splitString(billItems);
+    return allTotals; 
     };
+    
+    // var addCallOrSms = function(billItem){
+    //         if (billItem === "call"){
+    //             callsTotal += 2.75
+    //             return callsTotal;
+    //         }
+    //         else if (billItem === "sms"){
+    //             smsTotals += 0.75;
+    //             return smsTotals;
+    //         }
 
-    var addCallOrSms = function(billItem){
-        // var stringArray = splitString;
-        for(let i=0; i< billItem.length;i++){
-            // var billItemType = billItem[i].trim();
-            if (billItem === "call"){
-                callsTotal += 2.75
-                return callsTotal;
-            }
-            else if (billItem === "sms"){
-                smsTotals += 0.75;
-                return smsTotals;
-            }
-
-        }
-    };
+    //     }
+    
     var sumCalls = function(){
         return callsTotal.toFixed(2)
     }
@@ -51,7 +65,8 @@ var calculateBtnClicked = function (){
 
     return {
         cutString,
-        addCallOrSms,
+        splitString,
+        // addCallOrSms,
         sumTotals,
         sumCalls,
         sumSms,
