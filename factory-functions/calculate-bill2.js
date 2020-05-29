@@ -24,21 +24,9 @@ var calculateBtnClicked = function (){
                   smsTotals += 0.75;
           }          
       }
-    //   splitString(billItems);
     return allTotals; 
     };
     
-    // var addCallOrSms = function(billItem){
-    //         if (billItem === "call"){
-    //             callsTotal += 2.75
-    //             return callsTotal;
-    //         }
-    //         else if (billItem === "sms"){
-    //             smsTotals += 0.75;
-    //             return smsTotals;
-    //         }
-
-    //     }
     
     var sumCalls = function(){
         return callsTotal.toFixed(2)
@@ -66,7 +54,6 @@ var calculateBtnClicked = function (){
     return {
         cutString,
         splitString,
-        // addCallOrSms,
         sumTotals,
         sumCalls,
         sumSms,
