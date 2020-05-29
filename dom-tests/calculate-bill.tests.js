@@ -8,20 +8,20 @@ it ( "should cut a string of calls and sms's and return an array", function(){
 it ("should add R2.75 for each new call ", function(){
     let calculateBtn2 = calculateBtnClicked();
     let array = calculateBtn2.cutString("call , sms");
-    assert.equal( 3.5, calculateBtn2.splitString(array));
+    assert.equal( 3.5, calculateBtn2.addCallOrSms(array));
     this.timeout(5000);
 });
 it ("should charge R2.25 for 3 sms' ", function(){
     let calculateBtn3 = calculateBtnClicked();
     let array1 = calculateBtn3.cutString("sms ,sms,sms");
-    assert.equal( 2.25, calculateBtn3.splitString(array1))
+    assert.equal( 2.25, calculateBtn3.addCallOrSms(array1))
     this.timeout(5000);
 });
 
 it ("should charge R7 for 2 calls and 2 sms' ", function(){
     let calculateBtn4 = calculateBtnClicked();
     let array2 = calculateBtn4.cutString("call,call,sms,sms");
-    assert.equal( 7, calculateBtn4.splitString(array2))
+    assert.equal( 7, calculateBtn4.addCallOrSms(array2))
     this.timeout(5000);
 });
 

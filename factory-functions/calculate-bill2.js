@@ -3,15 +3,15 @@ var calculateBtnClicked = function (){
     var callsTotal = 0;
     var smsTotals = 0;
     var total = 0;
-
+var theSplitString = "";
 
     var cutString = function(string){
       var billItems = string.split(",");
       return billItems; 
     }
 
-    var splitString = function(theBillItems){
-        var theSplitString = theBillItems;
+    var addCallOrSms = function(theBillItems){
+        theSplitString = theBillItems;
       for(var i=0;i < theSplitString.length;i++)
       {
            var billItem = theSplitString[i].trim();
@@ -53,7 +53,7 @@ var calculateBtnClicked = function (){
 
     return {
         cutString,
-        splitString,
+        addCallOrSms,
         sumTotals,
         sumCalls,
         sumSms,

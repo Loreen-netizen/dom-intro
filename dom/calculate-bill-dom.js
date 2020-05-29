@@ -6,10 +6,11 @@ let calculateBtnInstance = calculateBtnClicked();
 
 function calculateBtnHasBeenClicked(){
     alert(billStringField.value)
-    
     calculateBtnInstance.cutString(String(billStringField.value));
-    calculateBtnInstance.sumCalls(String(billStringField.value));
-    calculateBtnInstance.sumSms(String(billStringField.value));
+    var array = calculateBtnInstance.cutString(String(billStringField.value));
+    calculateBtnInstance.addCallOrSms(Array(array));
+    // calculateBtnInstance.sumSms(String(billStringField.value));
+    // calculateBtnInstance.sumCalls(String(billStringField.value));
     calculateBtnInstance.sumTotals();
     
     
