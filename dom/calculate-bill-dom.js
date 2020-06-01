@@ -5,26 +5,27 @@ const billStringField = document.querySelector(".billString");
 let calculateBtnInstance = calculateBtnClicked();
 
 function calculateBtnHasBeenClicked(){
-    alert(billStringField.value)
-    calculateBtnInstance.cutString(String(billStringField.value));
-    var array = calculateBtnInstance.cutString(String(billStringField.value));
-    calculateBtnInstance.addCallOrSms(Array(array));
-    // calculateBtnInstance.sumSms(String(billStringField.value));
-    // calculateBtnInstance.sumCalls(String(billStringField.value));
-    calculateBtnInstance.sumTotals();
+   
+   
+    var overallTotal = calculateBtnInstance.addCallOrSms((billStringField.value));
     
     
     addClass();
 
-    billTotalElement.innerHTML =  calculateBtnInstance.sumTotals();        
+    billTotalElement.innerHTML = overallTotal.toFixed(2);   
+        
 };
 
 var addClass = function (){
     billTotalElement.classList.remove("warning");
     billTotalElement.classList.remove("critical");
-    billTotalElement.classList.add(calculateBtnInstance.updateClasses());
-    billTotalElement.classList.add(calculateBtnInstance.updateClasses());
+   
+        var total = calculateBtnInstance.addCallOrSms((billStringField.value));
+        if (total < 30 && total >= 20 ){
+            billTotalElement.classList.add("warning");
+    }   else if (total >= 30){
+        billTotalElement.classList.add("critical");
+    }
 };
 
 calculateBtnElement.addEventListener('click', calculateBtnHasBeenClicked);
-

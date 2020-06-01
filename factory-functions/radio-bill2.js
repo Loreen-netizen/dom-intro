@@ -7,23 +7,24 @@ var radioButtonBill = function(){
     var forEachCallAdd = function(){
      callsTotal += 2.75;
      overallTotal += 2.75;
+    return callsTotal.toFixed(2);
     }
 
     var newCallsTotal = function(){
-        return callsTotal
+        return callsTotal.toFixed(2);
     }
     var forEachSmsAdd = function(){
         smsTotal += 0.75;
         overallTotal += 0.75;
+        return smsTotal.toFixed(2);
        }
    
        var newSmsTotal = function(){
-           return smsTotal
+           return smsTotal.toFixed(2);
        }
 
-
     var finalTotal = function(){
-        return overallTotal
+        return overallTotal.toFixed(2);
        }
  
        var warningLevel = function(){

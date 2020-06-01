@@ -21,7 +21,7 @@ it ("should charge R0.75 for each new sms", function(){
       assert.equal(0.75, textBillFunction3.newSmsTotal() )
 
 });
-it ("should update calls total to R3.75 for 5 calls made", function(){
+it ("should update sms total to R3.75 for 5 sms' sent", function(){
     var textBillFunction4 = textInputBill();
     textBillFunction4.forEachSmsAdd();
     textBillFunction4.forEachSmsAdd();

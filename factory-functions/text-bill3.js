@@ -5,12 +5,13 @@ var textInputBill = function(){
     var overallTotal = 0;
 
     var forEachCallAdd = function(){
-     callsTotal += 2.75;
+     
+        callsTotal += 2.75;
      overallTotal += 2.75;
     }
 
     var newCallsTotal = function(){
-        return callsTotal
+        return callsTotal.toFixed(2)
     }
 
     var forEachSmsAdd = function(){
@@ -19,11 +20,11 @@ var textInputBill = function(){
        }
    
        var newSmsTotal = function(){
-           return smsTotal
+           return smsTotal.toFixed(2)
        }
 
        var finalTotal = function(){
-       return overallTotal
+       return overallTotal.toFixed(2)
       }
 
       var warningLevel = function(){
