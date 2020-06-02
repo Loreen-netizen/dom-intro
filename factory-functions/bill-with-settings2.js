@@ -69,6 +69,11 @@ let billWithSettingsFunction = function () {
 
         return criticalSetting;
     }
+    var theDefaultClass = function(){
+    if (updateTotalCost()< upDateWarning && updateTotalCost < upDateCritical() )
+    return ""
+    }
+
     var theWarningLevel = function () {
         if (updateTotalCost() >= upDateWarning())
             return "warning"
@@ -78,11 +83,6 @@ let billWithSettingsFunction = function () {
         if (updateTotalCost() >= upDateCritical())
             return "critical"
     }
-
-
-
-
-
 
 
     return {
@@ -101,6 +101,6 @@ let billWithSettingsFunction = function () {
         upDateCritical,
         theWarningLevel,
         theCriticalLevel,
-
+        theDefaultClass,
     }
 };

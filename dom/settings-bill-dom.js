@@ -48,8 +48,10 @@ var calculateCost = function () {
 var changeClass = function () {
     totalSettingsElement.classList.remove("warning");
     totalSettingsElement.classList.remove("critical");
+    // totalSettingsElement.classList.remove("");
     totalSettingsElement.classList.add(billWithSettingsInstance.theWarningLevel());
     totalSettingsElement.classList.add(billWithSettingsInstance.theCriticalLevel());
+    totalSettingsElement.classList.add(billWithSettingsInstance.theDefaultClass());
 
 };
 

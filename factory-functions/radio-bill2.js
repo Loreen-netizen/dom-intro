@@ -7,11 +7,11 @@ var radioButtonBill = function(){
     var forEachCallAdd = function(){
      callsTotal += 2.75;
      overallTotal += 2.75;
-    return callsTotal.toFixed(2);
+     return callsTotal.toFixed(2);
     }
 
     var newCallsTotal = function(){
-        return callsTotal.toFixed(2);
+        return callsTotal;
     }
     var forEachSmsAdd = function(){
         smsTotal += 0.75;

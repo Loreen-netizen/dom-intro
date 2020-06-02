@@ -6,33 +6,31 @@ var totalTwoElement = document.getElementById("totalTwo");
 
 var radioButtonBillInstance = radioButtonBill();
 
-function radioButtonBill2() {
+var radioButtonBill2= function(){
     var checkedRadioBtn = document.querySelector("input[name='billItemType']:checked");
     if (checkedRadioBtn) {
         var billItemType = checkedRadioBtn.value
     }
     if (billItemType === "call") {
-        radioButtonBillInstance.forEachCallAdd;
-        radioButtonBillInstance.newCallsTotal;
+        callTotalTwoElement.innerHTML =  radioButtonBillInstance.forEachCallAdd();
+    
     }
     else if (billItemType === "sms") {
-        radioButtonBillInstance.forEachSmsAdd;
-        radioButtonBillInstance.newSmsTotal;
+        smsTotalTwoElement.innerHTML =  radioButtonBillInstance.forEachSmsAdd();
+        
     }
-    callTotalTwoElement.innerHTML = radioButtonBillInstance.newCallsTotal;
-    smsTotalTwoElement.innerHTML = radioButtonBillInstance.newSmsTotal;
-    totalTwoElement.innerHTML = radioButtonBillInstance.finalTotal;
+    totalTwoElement.innerHTML = radioButtonBillInstance.finalTotal();
 };
 
 var updateClass = function(){
    
-    var totalCostR =radioButtonBillInstance.finalTotal;
+    var totalCostR =radioButtonBillInstance.finalTotal();
 
-    if (totalCostR >= 30) {
-        totalTwoElement.className = "critical";
+    if (totalCostR >= 30 && totalCostR < 50) {
+        totalTwoElement.className = "warning";
     }
     else if (totalCostR >= 50) {
-        totalTwoElement.className ="warning";
+        totalTwoElement.className ="critical";
     }
     else if (totalCostR < 30) {
         totalTwoElement.className ="";
