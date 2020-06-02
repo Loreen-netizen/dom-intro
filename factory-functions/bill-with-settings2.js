@@ -75,12 +75,12 @@ let billWithSettingsFunction = function () {
     }
 
     var theWarningLevel = function () {
-        if (updateTotalCost() >= upDateWarning())
+        if (updateTotalCost() >= upDateWarning() && updateTotalCost() > "0.00")
             return "warning"
     }
 
     var theCriticalLevel = function () {
-        if (updateTotalCost() >= upDateCritical())
+        if (updateTotalCost() >= upDateCritical() && updateTotalCost() > "0.00")
             return "critical"
     }
 
